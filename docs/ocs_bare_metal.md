@@ -50,6 +50,25 @@ Additional information can be found in the [official docs][1].
      oc label nodes <NodeName> cluster.ocs.openshift.io/openshift-storage=''
      ```
 
+If not already enabled, open the following iptables ports on all OpenShift cluster nodes as follows:
+
+```bash
+$ sudo iptables -A INPUT -p tcp -m multiport --destination-ports 9001:9022,17001:17020 -j ACCEPT
+$ sudo iptables -A INPUT -p udp -m multiport --destination-ports 9002 -j ACCEPT
+```
+
+
+On all the worker nodes, prep the disks targeted for installation. Run the wipefs command if these disks already had filesystems on them. For this exercise, each worker has four drives, one being the root disk, and the other three targeted for Portworx. 
+
+On each worker, run something similar to the command shown below.
+*** Ensure that you are not running this against disks with data on them. 
+
+```bash
+$ for i in b c d; do sudo wipefs -a /dev/sd$i; done
+```
+
+
+
 ## Install Local Storage Operator
 
 1. Create a namespace called `local-storage` as follows.
@@ -448,10 +467,6 @@ test-pv-pod   1/1     Running             0          18s
 
 
 # oc exec -it `oc get po -l "app=test-pv" -o custom-columns=":metadata.name"` bash
-```
-
-```text
-kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl kubectl exec [POD] -- [COMMAND] instead.
 ```
 
 ```bash
