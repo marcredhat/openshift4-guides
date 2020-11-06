@@ -19,7 +19,7 @@
 - Jared Hocutt ([@jaredhocutt](https://github.com/jaredhocutt))
 - John Call ([@johnsimcall](https://github.com/johnsimcall))
 - Kevin Jones ([@kjw3](https://github.com/kjw3))
-- Marc Chisinevski ([@kjw3](https://github.com/marcredhat))
+- Marc Chisinevski ([@marcredhat](https://github.com/marcredhat))
 
 ## Description
 
