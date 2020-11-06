@@ -287,7 +287,7 @@ Additional information can be found in the [official docs][1].
      name: ocs-operator
      namespace: openshift-storage
    spec:
-     channel: "stable-4.3"
+     channel: "stable-4.4"
      name: ocs-operator
      source: redhat-operators
      sourceNamespace: openshift-marketplace
@@ -372,7 +372,7 @@ Additional information can be found in the [official docs][1].
 
      ```text
      NAME             	AGE 	PHASE   CREATED AT         	VERSION
-     ocs-storagecluster   4m41s   Ready   2020-05-01T18:41:08Z   4.3.0
+     ocs-storagecluster   4m41s   Ready   2020-05-01T18:41:08Z   4.4.0
      ```
 
 4. Consider defining OpenShift Container Storage CephFS as the default storage
@@ -448,7 +448,7 @@ resources:
       memory: 1Gi
 ```
 
-[1]: https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.3/html-single/deploying_openshift_container_storage/index#installing-openshift-container-storage-using-local-storage-devices_rhocs
-[2]: https://docs.openshift.com/container-platform/4.3/operators/olm-adding-operators-to-cluster.html#olm-installing-operator-from-operatorhub-using-cli_olm-adding-operators-to-a-cluster
-[3]: https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.3/html-single/deploying_openshift_container_storage/index#verifying-your-openshift-container-storage-installation_rhocs
+[1]: https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.4/html-single/deploying_openshift_container_storage/index#installing-openshift-container-storage-using-local-storage-devices_rhocs
+[2]: https://docs.openshift.com/container-platform/4.4/operators/olm-adding-operators-to-cluster.html#olm-installing-operator-from-operatorhub-using-cli_olm-adding-operators-to-a-cluster
+[3]: https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.4/html-single/deploying_openshift_container_storage/index#verifying-your-openshift-container-storage-installation_rhocs
 [4]: https://github.com/openshift/ocs-operator/pull/521#pullrequestreview-413936502
