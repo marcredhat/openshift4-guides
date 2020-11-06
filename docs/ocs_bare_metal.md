@@ -1,8 +1,8 @@
-# OCS 4.3 on Bare Metal
+# OCS 4.4 on Bare Metal
 
 ## Table of Contents
 
-- [OCS 4.3 on Bare Metal](#ocs-43-on-bare-metal)
+- [OCS 4.4 on Bare Metal](#ocs-44-on-bare-metal)
   - [Table of Contents](#table-of-contents)
   - [Authors](#authors)
   - [Description](#description)
@@ -23,8 +23,10 @@
 ## Description
 
 This guide describes the steps to install and configure OpenShift Container
-Storage (OCS) 4.3 on an OpenShift cluster that has been installed using the
+Storage (OCS) 4.4 on an OpenShift cluster that has been installed using the
 bare metal UPI installation method.
+
+Follow the OCS/OpenShift Container Platform interoperability matrix at https://access.redhat.com/articles/4731161.
 
 Additional information can be found in the [official docs][1].
 
@@ -76,7 +78,7 @@ Additional information can be found in the [official docs][1].
      name: local-storage-operator
      namespace: local-storage
    spec:
-     channel: "4.3"
+     channel: "4.4"
      name: local-storage-operator
      source: redhat-operators
      sourceNamespace: openshift-marketplace
@@ -95,12 +97,6 @@ Additional information can be found in the [official docs][1].
    oc get csv
    ```
 
-   Example output:
-
-   ```text
-   NAME                                     	DISPLAY     	VERSION           	REPLACES   PHASE
-   local-storage-operator.4.3.14-202004200457   Local Storage   4.3.14-202004200457          	Succeeded
-   ```
 
 ## Configure Local Storage Operator
 
@@ -113,14 +109,7 @@ Additional information can be found in the [official docs][1].
       oc get nodes -l cluster.ocs.openshift.io/openshift-storage=
       ```
 
-      Example output:
-
-      ```text
-      NAME                   STATUS   ROLES    AGE     VERSION
-      storage0.example.com   Ready    worker   6h45m   v1.16.2
-      storage1.example.com   Ready    worker   6h45m   v1.16.2
-      storage2.example.com   Ready    worker   6h45m   v1.16.2
-      ```
+     
 
    - For each worker node that is used for OpenShift Container Storage
      resources, find the unique `/dev/disk/by-id/` or `/dev/disk/by-path/`
@@ -322,7 +311,7 @@ Additional information can be found in the [official docs][1].
    ```text
    NAME                        	DISPLAY                   	VERSION   REPLACES   PHASE
    lib-bucket-provisioner.v1.0.0   lib-bucket-provisioner    	1.0.0            	Succeeded
-   ocs-operator.v4.3.0         	OpenShift Container Storage   4.3.0            	Succeeded
+   ocs-operator.v4.4.2         	OpenShift Container Storage   4.4.2            	Succeeded
    ```
 
 ## Configure OpenShift Container Storage Operator
