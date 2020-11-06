@@ -19,6 +19,7 @@
 - Jared Hocutt ([@jaredhocutt](https://github.com/jaredhocutt))
 - John Call ([@johnsimcall](https://github.com/johnsimcall))
 - Kevin Jones ([@kjw3](https://github.com/kjw3))
+- Marc Chisinevski ([@kjw3](https://github.com/marcredhat))
 
 ## Description
 
@@ -58,9 +59,12 @@ $ sudo iptables -A INPUT -p udp -m multiport --destination-ports 9002 -j ACCEPT
 ```
 
 
-On all the worker nodes, prep the disks targeted for installation. Run the wipefs command if these disks already had filesystems on them. For this exercise, each worker has four drives, one being the root disk, and the other three targeted for Portworx. 
+On all the worker nodes, prep the disks targeted for installation. Run the wipefs command if these disks already had filesystems on them. 
+
+For this exercise, each worker has four drives, one being the root disk, and the other three targeted for OpenShift Container Storage. 
 
 On each worker, run something similar to the command shown below.
+
 *** Ensure that you are not running this against disks with data on them. 
 
 ```bash
