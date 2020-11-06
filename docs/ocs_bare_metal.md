@@ -436,6 +436,7 @@ spec:
           name: test-data
 ```
 
+```bash
 # oc apply -f pvctestpod.yml
 
 # oc get po/test-pv-pod -w
@@ -447,8 +448,13 @@ test-pv-pod   1/1     Running             0          18s
 
 
 # oc exec -it `oc get po -l "app=test-pv" -o custom-columns=":metadata.name"` bash
-kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl kubectl exec [POD] -- [COMMAND] instead.
+```
 
+```text
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl kubectl exec [POD] -- [COMMAND] instead.
+```
+
+```bash
 root@test-pv-pod:/# df -h /test
 Filesystem                      Size  Used Avail Use% Mounted on
 /dev/pxd/pxd365962277412932531  976M  1.3M  908M   1% /test
@@ -457,7 +463,7 @@ root@test-pv-pod:/# ls -l /test/foo
 -rw-r--r--. 1 root root 0 Jul 30 19:28 /test/foo
 root@test-pv-pod:/# rm /test/foo
 root@test-pv-pod:/# 
-
+```
 
 
 ## Appendix
