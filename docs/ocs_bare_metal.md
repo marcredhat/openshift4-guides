@@ -398,6 +398,68 @@ Additional information can be found in the [official docs][1].
    openshift-storage.noobaa.io       	openshift-storage.noobaa.io/obc     	Delete      	Immediate          	false              	4m2s
    ```
 
+6. Test
+
+Set up a deployment file called pvctestpod.yml
+
+```yaml
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-pv-claim
+  labels:
+    app: test-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pv-pod
+  labels:
+    app: test-pv
+spec:
+  volumes:
+    - name: test-data
+      persistentVolumeClaim:
+        claimName: test-pv-claim
+  containers:
+    - name: test-pv-container
+      image: nginx
+      volumeMounts:
+        - mountPath: "/test"
+          name: test-data
+```
+
+# oc apply -f pvctestpod.yml
+
+# oc get po/test-pv-pod -w
+NAME          READY   STATUS              RESTARTS   AGE
+test-pv-pod   0/1     ContainerCreating   0          9s
+test-pv-pod   0/1     ContainerCreating   0          10s
+test-pv-pod   0/1     ContainerCreating   0          15s
+test-pv-pod   1/1     Running             0          18s
+
+
+# oc exec -it `oc get po -l "app=test-pv" -o custom-columns=":metadata.name"` bash
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl kubectl exec [POD] -- [COMMAND] instead.
+
+root@test-pv-pod:/# df -h /test
+Filesystem                      Size  Used Avail Use% Mounted on
+/dev/pxd/pxd365962277412932531  976M  1.3M  908M   1% /test
+root@test-pv-pod:/# touch /test/foo
+root@test-pv-pod:/# ls -l /test/foo
+-rw-r--r--. 1 root root 0 Jul 30 19:28 /test/foo
+root@test-pv-pod:/# rm /test/foo
+root@test-pv-pod:/# 
+
+
+
 ## Appendix
 
 ### Limit Resources
