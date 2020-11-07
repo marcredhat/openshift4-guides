@@ -72,6 +72,10 @@ $ for i in b c d; do sudo wipefs -a /dev/sd$i; done
 ```
 
 
+```bash
+$ for i in b c d; do sudo mkfs.ext4 /dev/sd$i; done
+```
+
 
 ## Install Local Storage Operator
 
