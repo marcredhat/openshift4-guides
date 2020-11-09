@@ -491,6 +491,9 @@ root@test-pv-pod:/#
 
 ## Appendix
 
+### Scale out by adding devices and/or nodes: 
+https://www.openshift.com/blog/deploying-openshift-container-storage-using-local-devices
+
 ### Limit Resources
 
 If you are going to attempt to install OCS on undersized machines that do not
