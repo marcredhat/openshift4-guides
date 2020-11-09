@@ -343,8 +343,16 @@ $ for i in b c d; do sudo mkfs.ext4 /dev/sd$i; done
 
 ## Configure OpenShift Container Storage Operator
 
+
+
 1. Create `StorageCluster` CR `cluster-service-metal.yaml` using
    `monDataDirHostPath` and `localblock` storage classes.
+   
+   Set the count parameter to the number of devices you want to use with replica 3. 
+   
+   In our case, 9 disks with replica 3 means, count = 3.
+
+   Also, set the spec.storageDeviceSets.dataPVCTemplate.spec.resources.requests.storage to the size of the PVs you already have.
 
    ```yaml
    ---
